@@ -49,24 +49,12 @@ public class Student {
         Student student = (Student) obj;
         return email.equals(student.email) && name.equals(student.name) && password.equals(student.password);
     }
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(email, name, password, sCourses);
-//    }
+
 
     @Override
     public int hashCode() {
 
         return Objects.hash(email, name, password);
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "email='" + email + '\'' +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                '}';
     }
 
 

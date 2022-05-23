@@ -54,13 +54,6 @@ public class Course {
         return Objects.hash(id, name, instructor);
     }
 
-    @Override
-    public String toString() {
-        return "Course{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", instructor='" + instructor + '\'' +
-                '}';
-    }
+
 
 }
