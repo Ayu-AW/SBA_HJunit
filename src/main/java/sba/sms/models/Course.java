@@ -27,8 +27,7 @@ public class Course {
     @NonNull
     @Column(length = 100, nullable = false)
     String instructor;
-//    @ManyToMany
-//
+
     @ManyToMany (mappedBy = "sCourses",cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
     List<Student> students = new ArrayList<>();
     public void addStudents(Student student){

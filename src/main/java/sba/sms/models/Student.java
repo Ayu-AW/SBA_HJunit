@@ -31,7 +31,7 @@ public class Student {
     String password;
 
     @NonNull
-    @ToString.Exclude // Not sure if I need this one
+    @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @ManyToMany(cascade = CascadeType.ALL) //add orphanRemoval = true;
     @JoinTable(name ="student_courses", joinColumns = {@JoinColumn(name = "student_email")},inverseJoinColumns = {@JoinColumn(name = "courses_id")})

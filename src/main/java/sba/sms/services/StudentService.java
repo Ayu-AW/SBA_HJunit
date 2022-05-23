@@ -116,28 +116,5 @@ public class StudentService implements Studentl {
         }
         return courseList;
     }
-    public List<Course> getStudentCoursesHql(Course c) {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
 
-        List<Course> courses = null;
-        try {
-            tx = s.beginTransaction();
-
-            // bug detected -> results are incorrect
-            Query q = s.createQuery("SELECT c.id, c.name, c.instructor FROM Course as c JOIN student_courses as sc ON sc.courses_id = c.id JOIN Student as s ON s.email = sc.student_email WHERE s.email = :email");
-            q.setParameter("email",c.getId());
-            List<Object[]> courseList = q.getResultList();
-
-            courses = courseList.stream().map(objects -> new Course((Integer)objects[0],(String)objects[1],(String) objects[2])).
-                    collect(Collectors.toList());
-            tx.commit();
-        } catch (HibernateException exception) {
-            if (tx!=null) tx.rollback();
-            exception.printStackTrace();
-        } finally {
-            s.close();
-        }
-        return courses;
-    }
 }
